@@ -28,6 +28,7 @@ public class ShoppingCart {
     @OneToMany(mappedBy = "shoppingCart")
     private Set<Product> products;
     
+   
 
     public ShoppingCart() {
     }

@@ -48,9 +48,8 @@ public class Product {
     private String type;
     
     @ManyToOne
-    @JoinColumn(name = "shopping_cart_id")
+    @JoinColumn(name="shopping_cart_id")
     private ShoppingCart shoppingCart;
-
 
     
     
