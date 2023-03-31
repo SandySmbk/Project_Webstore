@@ -1,4 +1,5 @@
 package com.fh.webshopdemo.demo.controller;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 //Verarbeitung von HTTP-Anfragen zu steuern und die Antwort zurück an den Client zu senden.
@@ -31,7 +33,7 @@ public class ProductController {
     }
   
     // Handles HTTP GET requests to "/products" and returns a list of all products
-    @GetMapping
+/*    @GetMapping
     public List<Product> findAllProducts() {
         return productService.findAll();
     }
@@ -40,7 +42,7 @@ public class ProductController {
 public Product findProductById(@PathVariable Long id) {
     return productService.findById(id);
 }
-
+ */
 @PutMapping("/{id}")
 public Product updateProduct(@PathVariable Long id, @Valid @RequestBody ProductDTO productDto) {
     Product product = mapProductDTOToProduct(productDto);
@@ -52,10 +54,14 @@ public Product updateProduct(@PathVariable Long id, @Valid @RequestBody ProductD
 public void deleteProduct(@PathVariable Long id) {
     productService.deleteProduct(id);
 }
+
+/*
 @GetMapping("/search/{name}")
 public List<Product> searchProducts(@PathVariable String name) {
     return productService.searchProducts(name);
 }
+
+*/
 
 
 
@@ -83,4 +89,21 @@ public List<Product> searchProducts(@PathVariable String name) {
         return product;
     }
 
+
+
+    @GetMapping
+    public List<Product>findAll(
+        @RequestParam(name="searchTerm", required = false) String searchTerm) {
+
+    List<Product> allProducts = productService.findAll();
+    List<Product> matchingProducts = new ArrayList<>();
+
+    for (Product product: allProducts){
+        if (searchTerm != null && !product.getName().toLowerCase().contains(searchTerm.toLowerCase())){
+            matchingProducts.add(product);
+        }else {
+        return allProducts;}
+    }
+    return matchingProducts;
+}
 }

@@ -12,8 +12,13 @@
   <!-- Bootstrap JS-->
   <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
+  <!--Jquery Datenbank-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
   <!--Eigenen Files-->
   <link rel="stylesheet" href="style.css">
+  <script src="productsLoading.js" defer></script>
+  <script src="layout.js" defer ></script>
 
   <!--Overlay-Header-->
   <script>
@@ -39,12 +44,20 @@
   <div class="container">
     <div class="row">
       <div class="col-4">
-
+        <form id="search-filter" class="d-flex mt-3" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search">
+          <button class="btn" style="background-color: #220f03" type="submit">Search</button>
+        </form>
       </div>
       <div class="col-5">
 
       </div>
   
+      <div class="container">
+        <div id="productsContainer">
+
+        </div>
+      </div>
     </div>
   </div>
 
