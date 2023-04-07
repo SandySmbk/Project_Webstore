@@ -50,12 +50,29 @@ $(document).ready(function(){
 
 */
 
-
+$(document).ready(function() {
 $.get({
     url: 'http://localhost:8080/api/products',
     cors: true, // CORS enabled
     success: function (products) { addProductstoPage(products) }, // On success, add the products to the page
     error: console.error
+});
+$('#searchBtn').on('click', function() {
+    const query = $('#searchInput').val().toLowerCase().trim();
+    if (query.length > 0) {
+      // Send search request to API
+      $.get({
+        url: `http://localhost:8080/api/products?search=${query}`,
+        cors: true,
+        success: function(products) {
+          // Display search results
+          removeProducts();
+          addProductstoPage(products);
+        },
+        error: console.error
+      });
+    }
+  });
 });
 
 function addProductstoPage(products) {
@@ -93,7 +110,7 @@ function createProduct(product) {
     cardBody.append(name);
     cardBody.append(description);
     cardBody.append(price);
-    card.append(image);
+    //card.append(image);
     card.append(cardBody);
     //append the card to the container
     cardContainer.append(card);
