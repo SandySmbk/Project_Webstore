@@ -1,4 +1,7 @@
-document.getElementById("search-filter").onclick = function(event){
+
+document.getElementById("search-filter").onsubmit = function(event){
+
+    event.preventDefault(); // Verhindert das Neuladen der Seite
 
     removeProducts();
 

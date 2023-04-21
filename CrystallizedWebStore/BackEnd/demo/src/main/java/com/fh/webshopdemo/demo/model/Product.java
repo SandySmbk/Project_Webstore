@@ -133,7 +133,7 @@ public class Product {
         this.id = id;
     }
     
-    public ShoppingCart getShoppingCart() {
+   public ShoppingCart getShoppingCart() {
             return shoppingCart;
         }
     
