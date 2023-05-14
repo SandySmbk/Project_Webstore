@@ -1,0 +1,2 @@
+INSERT INTO `product`(`id`, `description`, `image_url`, `name`, `price`, `quantity`, `type`, `shopping_cart_id`) VALUES ('1','Bracelet brown','Image/ArmbandBraun.jpg','Bracelet','16','2','bracelet', NUll)
+INSERT INTO `product`(`id`, `description`, `image_url`, `name`, `price`, `quantity`, `type`, `shopping_cart_id`) VALUES ('2','Golden rings','Image/GoldRinge.jpg','Gold ring','20.00','2','rings', NULL)
